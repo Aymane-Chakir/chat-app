@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../New folder/comment-service/comment-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/post-service/post-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/story-service/story-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/user-service/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/message-service/message-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/Discovery-service/Discovery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/gateway-service/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/config-service/config-service/pom.xml" />
+        <option value="$PROJECT_DIR$/story-service/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/post-service/pom.xml" />
+        <option value="$PROJECT_DIR$/message-service/pom.xml" />
+        <option value="$PROJECT_DIR$/comment-service/pom.xml" />
+        <option value="$PROJECT_DIR$/config-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Discovery-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
