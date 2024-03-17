@@ -26,7 +26,7 @@ private GlobalConfig globalConfig;
     private  int b;
    @GetMapping("/userConfig")
    public Map<String, Integer> userConfig(){
-       return Map.of("a",a,"b",b);
+       return Map.of("a",a=11,"b",b=22);
    }
    @GetMapping("/globalConfig")
    public GlobalConfig globalConfig(){
