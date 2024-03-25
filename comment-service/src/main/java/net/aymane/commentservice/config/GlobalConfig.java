@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "global.params")
+@ConfigurationProperties("global.params")
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class GlobalConfig {
     private int p1;

@@ -22,6 +22,7 @@ public class Comment {
     private Long id;
     private Date createdAt;
     private String content;
+    private Long publication_Id;
 //    private User auteur;
 //    private Post post;
 }

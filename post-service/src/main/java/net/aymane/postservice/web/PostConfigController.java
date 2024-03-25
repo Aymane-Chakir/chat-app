@@ -13,12 +13,13 @@ import java.util.Map;
 
 @RestController
 @AllArgsConstructor
+@NoArgsConstructor
 public class PostConfigController {
     private  GlobalConfig globalConfig;
 
     @Value("${post.params.w}")
     private Integer w;
-    @Value("${Post.params.x}")
+    @Value("${post.params.x}")
     private Integer x;
     @GetMapping("/testConfig")
     public Map<String, Integer> test(){

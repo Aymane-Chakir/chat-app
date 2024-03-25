@@ -1,5 +1,6 @@
 package net.aymane.postservice;
 
+import net.aymane.postservice.client.UserRestClient;
 import net.aymane.postservice.config.GlobalConfig;
 import net.aymane.postservice.entity.Post;
 import net.aymane.postservice.repository.PostRepository;
@@ -23,16 +24,27 @@ public class PostServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PostServiceApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner commandLineRunner (PostRepository postRepository){
-		return args -> {
-//			Post post = Post.builder()
-//					.image("img1")
-//					.caption("first pub")
-//					.createdAt(new Date())
-//					.build();
-//			postRepository.save(post);
-		};
+//	@Bean
+//	CommandLineRunner commandLineRunner (PostRepository postRepository, UserRestClient userRestClient){
+//		return args -> {
+//			userRestClient.getAllUsers().forEach(user -> {
+//				Post post = Post.builder()
+//						.createdAt(new Date())
+//						.image("nft22")
+//						.User_id(user.getId())
+//						.build();
+//
+//				Post post1 = Post.builder()
+//						.caption("nft sus")
+//						.image("ghjkl")
+//						.User_id(user.getId())
+//						.createdAt(new Date())
+//						.build();
+//				postRepository.save(post);
+//				postRepository.save(post1);
+//			});
+//		   };
+//		};
 	}
 
-}
+

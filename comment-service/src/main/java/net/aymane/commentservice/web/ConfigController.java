@@ -1,6 +1,7 @@
 package net.aymane.commentservice.web;
 
 import lombok.AllArgsConstructor;
+import net.aymane.commentservice.config.DevConfig;
 import net.aymane.commentservice.config.GlobalConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +14,14 @@ import java.util.Map;
 public class ConfigController {
 
     private  GlobalConfig globalConfig;
+    private DevConfig devConfig;
 
-    @Value("${comment.params.m}")
-    private int m;
-    @Value("${comment.params.n}")
-    private int n;
 
-    @GetMapping("/commentConfig")
-    public Map<String,Integer> commentParam(){
-        return Map.of("m",m,"n",n);
-    }
+
+@GetMapping("devConfig")
+public DevConfig devConfig(){
+    return devConfig;
+}
     @GetMapping("/globalConfig")
     public GlobalConfig globalConfig(){
         return globalConfig;

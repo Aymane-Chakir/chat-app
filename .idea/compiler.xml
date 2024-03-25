@@ -12,13 +12,11 @@
         <module name="Discovery-service" />
         <module name="config-service" />
         <module name="story-service" />
+        <module name="gateway-service" />
         <module name="user-service" />
         <module name="message-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="gateway-service" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
