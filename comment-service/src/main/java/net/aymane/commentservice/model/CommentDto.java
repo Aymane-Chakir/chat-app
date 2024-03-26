@@ -1,13 +1,12 @@
 package net.aymane.commentservice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import net.aymane.commentservice.external.PostResponseDto;
 
-@Getter @Setter @ToString
+@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
 public class CommentDto {
     private Long id;
-    private Long publicationId;
-    private String comment;
+    private String content;
     private Long publication_Id;
+    private PostResponseDto post;
 }

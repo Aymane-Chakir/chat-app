@@ -1,6 +1,7 @@
 package net.aymane.commentservice.service;
 
 import net.aymane.commentservice.exception.CommentNotFoundException;
+import net.aymane.commentservice.external.PostResponseDto;
 import net.aymane.commentservice.model.CommentDto;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface CommentService {
 
 
     // ------------------------------------ create post------------------------------------------------------------------
-    public void addComment(CommentDto commentDto);
+    public CommentDto addComment(CommentDto commentDto);
 
     //----------------------------------- update post--------------------------------------------------------------------
     public CommentDto updateComment( CommentDto commentDto) throws CommentNotFoundException;
@@ -23,4 +24,6 @@ public interface CommentService {
 
     //------------------------------ get comment by id -----------------------------------------------------------------
     public CommentDto getComment(Long id) throws CommentNotFoundException;
+
+    public PostResponseDto getPubById(Long id);
 }

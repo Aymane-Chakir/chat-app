@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 public class CommentDto {
-    private Long publicationId;
-    private String comment;
+    private Long id;
+    private String content;
     private Long publication_Id;
 }

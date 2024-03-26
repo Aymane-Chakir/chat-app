@@ -13,12 +13,12 @@ import java.util.Map;
 @AllArgsConstructor
 public class ConfigController {
 
-    private  GlobalConfig globalConfig;
-    private DevConfig devConfig;
+    private final   GlobalConfig globalConfig;
+    private final DevConfig devConfig;
 
 
 
-@GetMapping("devConfig")
+@GetMapping("/devConfig")
 public DevConfig devConfig(){
     return devConfig;
 }

@@ -37,4 +37,7 @@ public interface UserService {
    //--------------------------------- search by name ------------------------------------------------------------------
 
     public List<UserResponseDto> searchUser(String kw) throws UserException;
+
+
+
 }

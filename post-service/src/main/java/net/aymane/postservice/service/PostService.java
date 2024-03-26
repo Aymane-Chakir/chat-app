@@ -5,6 +5,8 @@ import net.aymane.postservice.external.CommentDto;
 import net.aymane.postservice.external.UserResponseDto;
 import net.aymane.postservice.model.PostRequestDto;
 import net.aymane.postservice.model.PostResponseDto;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -38,4 +40,6 @@ public interface PostService {
    //--------------------------------- add comment to publication-------------------------------------------------------
    public void addCommentToPublication(CommentDto commentDto);
 
+   //-------------------------------------- get user by id from user service-------------------------------------------
+      public UserResponseDto getUser(Long id);
 }

@@ -31,17 +31,16 @@ public class PostServiceImp implements PostService{
     @Override
     public PostResponseDto getPub(Long id) throws PostNotFoundException {
         Post post = postRepository.findById(id).orElseThrow(()->new PostNotFoundException("post not found "));
-       UserResponseDto user = userRestClient.getUser(post.getUser_id());
-        post.setUser(user);
+//       UserResponseDto user = getUser(post.getUser_id());
         return postMapper.fromEntityToDto(post);
     }
 // --------------------------------------- add publication--------------------------------------------------------------
     @Override
     public PostResponseDto createPost(PostRequestDto requestDto) {
-        UserResponseDto userResponseDto= userRestClient.getUser(requestDto.getId());
+        UserResponseDto userResponseDto= getUser(requestDto.getUser_id());
+        System.out.println(userResponseDto);
         Post post = postMapper.fromRequestDtoToEntity(requestDto);
-        post.setUser(post.getUser());
-        post.setUser(userResponseDto);
+        post.setUserResponseDto(userResponseDto);
         Post post1= postRepository.save(post);
         return postMapper.fromEntityToDto(post1);
     }
@@ -89,6 +88,11 @@ public class PostServiceImp implements PostService{
     @Override
     public void addCommentToPublication(CommentDto commentDto) {
         commentServiceClient.addComment(commentDto);
+    }
+//--------------------------------------- get user from userService-----------------------------------------------------
+    @Override
+    public UserResponseDto getUser(Long id) {
+        return userRestClient.getUser(id).getBody();
     }
 }
 

@@ -1,13 +1,11 @@
 package net.aymane.commentservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.aymane.commentservice.external.PostResponseDto;
 
 import java.util.Date;
 
@@ -23,6 +21,6 @@ public class Comment {
     private Date createdAt;
     private String content;
     private Long publication_Id;
-//    private User auteur;
-//    private Post post;
+    @Transient
+    private PostResponseDto post;
 }

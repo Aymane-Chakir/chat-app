@@ -3,6 +3,7 @@ import lombok.AllArgsConstructor;
 import net.aymane.postservice.client.CommentServiceClient;
 import net.aymane.postservice.exception.PostNotFoundException;
 import net.aymane.postservice.external.CommentDto;
+import net.aymane.postservice.external.UserResponseDto;
 import net.aymane.postservice.model.PostRequestDto;
 import net.aymane.postservice.model.PostResponseDto;
 import net.aymane.postservice.repository.PostRepository;
@@ -23,12 +24,12 @@ public class PostController {
     private CommentServiceClient commentServiceClient;
 //------------------------------- get all publication-------------------------------------------------------------------
     @GetMapping("/posts")
-    public ResponseEntity<?> getPost() throws PostNotFoundException {
+    public ResponseEntity<List<PostResponseDto>> getPost() throws PostNotFoundException {
       List<PostResponseDto> responseDtoList = postService.allPosts();
-      Map<String ,Object> response= new HashMap<>();
-      response.put("status","201");
-      response.put("data",responseDtoList);
-      return ResponseEntity.status(HttpStatus.OK).body(response);
+//      Map<String ,Object> response= new HashMap<>();
+//      response.put("status","201");
+//      response.put("data",responseDtoList);
+      return ResponseEntity.status(HttpStatus.OK).body(responseDtoList);
     };
 
 //------------------------------ create post ---------------------------------------------------------------------------
@@ -39,12 +40,12 @@ public class PostController {
     }
 // --------------------------------- get post by id --------------------------------------------------------------------
     @GetMapping("/post/{id}")
-    public  ResponseEntity<?> getPubById(@PathVariable Long id ) throws PostNotFoundException {
+    public  ResponseEntity<PostResponseDto> getPubById(@PathVariable Long id ) throws PostNotFoundException {
         PostResponseDto postResponseDto = postService.getPub(id);
-        Map<String,Object> response = new HashMap<>();
-        response.put("status","201");
-        response.put("data",postResponseDto);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+//        Map<String,Object> response = new HashMap<>();
+//        response.put("status","201");
+//        response.put("data",postResponseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
 
     @GetMapping("/post/{id}/like")
@@ -52,13 +53,13 @@ public class PostController {
          postService.like(id);
     }
     @PutMapping("/post/{id}")
-    public  ResponseEntity<?> updatePost(@PathVariable Long id , @RequestBody PostRequestDto requestDto) throws PostNotFoundException {
+    public  ResponseEntity<PostResponseDto> updatePost(@PathVariable Long id , @RequestBody PostRequestDto requestDto) throws PostNotFoundException {
         requestDto.setId(id);
         PostResponseDto postResponseDto = postService.updatePost(requestDto);
-        Map<String,Object> response = new HashMap<>();
-        response.put("status","201");
-        response.put("data",postResponseDto);
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+//        Map<String,Object> response = new HashMap<>();
+//        response.put("status","201");
+//        response.put("data",postResponseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(postResponseDto);
     }
     // ------------------------------------------------ delete publication----------------------------------------------
     @DeleteMapping("/post/{id}")
@@ -80,7 +81,12 @@ public class PostController {
     //------------------------------ add comment------------------------------------------------------------------------
     @PostMapping("/comments")
     public void addComment(@RequestParam Long id, @RequestBody CommentDto comment) {
-        comment.setPublicationId(id);
+        comment.setPublication_Id(id);
         commentServiceClient.addComment(comment);
+    }
+
+    @GetMapping("/user/{id}")
+    public UserResponseDto getUser(@PathVariable Long id){
+        return postService.getUser(id);
     }
 }

@@ -32,6 +32,6 @@ public class Post {
     @Transient
   private List<CommentDto> comment;
     @Transient
-    private UserResponseDto User;
+    private UserResponseDto userResponseDto;
     private Long User_id;
 }

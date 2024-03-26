@@ -2,11 +2,14 @@ package net.aymane.commentservice.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.aymane.commentservice.client.PostService;
 import net.aymane.commentservice.entity.Comment;
 import net.aymane.commentservice.exception.CommentNotFoundException;
+import net.aymane.commentservice.external.PostResponseDto;
 import net.aymane.commentservice.mapper.CommentMapper;
 import net.aymane.commentservice.model.CommentDto;
 import net.aymane.commentservice.repository.CommentRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,15 +22,21 @@ import java.util.stream.Collectors;
 public class CommentServiceImp implements CommentService {
     private CommentRepository commentRepository;
     private CommentMapper commentMapper;
-    @Override
-    public void addComment(CommentDto commentDto) {
-        log.info("comment posted");
-        commentDto.setComment(commentDto.getComment());
-        commentDto.setPublicationId(commentDto.getPublicationId());
-        Comment comment = commentMapper.fromDtoToEntity(commentDto);
-        commentRepository.save(comment);
-    }
+    private PostService postService;
 
+
+    //------------------------------------------------- add comment-----------------------------------------------------
+    @Override
+    public CommentDto addComment(CommentDto commentDto) {
+        log.info("comment posted");
+        PostResponseDto postResponseDto = getPubById(commentDto.getPublication_Id());
+        System.out.println(postResponseDto);
+        commentDto.setPost(postResponseDto);
+        Comment comment = commentMapper.fromDtoToEntity(commentDto);
+    Comment comment1 = commentRepository.save(comment);
+        return commentMapper.fromEntityToDto(comment1) ;
+    }
+// ---------------------------- update comment--------------------------------------------------------------------------
     @Override
     public CommentDto updateComment(CommentDto commentDto) throws CommentNotFoundException {
         log.info("your comment is updated");
@@ -55,5 +64,10 @@ public class CommentServiceImp implements CommentService {
     public CommentDto getComment(Long id) throws CommentNotFoundException {
         Comment comment = commentRepository.findById(id).orElseThrow(()->new CommentNotFoundException("comment not found"));
         return commentMapper.fromEntityToDto(comment);
+    }
+
+    @Override
+    public PostResponseDto getPubById(Long id) {
+        return postService.getPubById(id).getBody();
     }
 }

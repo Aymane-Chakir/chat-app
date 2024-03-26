@@ -24,12 +24,12 @@ public class UserController {
 
 //-------------------------------- get user ----------------------------------------------------------------------------
     @GetMapping("/user/{id}")
-public  ResponseEntity<?> getUser(@PathVariable Long id) throws UserException {
+public  ResponseEntity<UserResponseDto> getUser(@PathVariable Long id) throws UserException {
         UserResponseDto responseDto = userService.getUserById(id);
-        Map<String,Object> reponse = new HashMap<>();
-        reponse.put("status","201");
-        reponse.put("data",responseDto);
-        return ResponseEntity.status(HttpStatus.OK).body(reponse);
+//        Map<String,Object> reponse = new HashMap<>();
+//        reponse.put("status","201");
+//        reponse.put("data",responseDto);
+        return ResponseEntity.status(HttpStatus.OK).body(responseDto);
 }
 
     // ------------------------------ get user list---------------------------------------------------------------------

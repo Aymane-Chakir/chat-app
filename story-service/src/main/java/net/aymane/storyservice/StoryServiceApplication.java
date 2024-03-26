@@ -22,14 +22,5 @@ public class StoryServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StoryServiceApplication.class, args);
 	}
-//	@Bean
-//	CommandLineRunner commandLineRunner(StoryRepository storyRepository){
-//		return args -> {
-//			Story story = Story.builder()
-//					.createdAt()
-//					.picture("src:1125")
-//					.build();
-//			storyRepository.save(story);
-//		};
-//	};
+
 }

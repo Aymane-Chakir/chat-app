@@ -42,7 +42,7 @@ public class User {
     private Date createdAt;
     private String picture;
     @Transient
-    @ElementCollection
+//    @ElementCollection
     private List<Pub> posts;
 
 //@JdbcTypeCode(SqlTypes.JSON)

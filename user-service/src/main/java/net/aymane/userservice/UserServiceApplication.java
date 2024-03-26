@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Date;
 
 @SpringBootApplication
+
 @EnableDiscoveryClient
 @EnableConfigurationProperties({GlobalConfig.class})
 @AllArgsConstructor

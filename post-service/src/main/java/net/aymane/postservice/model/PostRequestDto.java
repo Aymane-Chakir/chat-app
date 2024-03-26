@@ -19,6 +19,6 @@ public class PostRequestDto {
 //    private double like ;
     private Boolean active;
     //private List<Comment> comment;
-    private UserResponseDto User;
+    private UserResponseDto userResponseDto;
     private Long User_id;
 }
