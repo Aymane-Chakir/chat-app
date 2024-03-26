@@ -86,8 +86,9 @@ public class PostServiceImp implements PostService{
 
     // --------------------------------- add comment to publication-----------------------------------------------------
     @Override
-    public void addCommentToPublication(CommentDto commentDto) {
-        commentServiceClient.addComment(commentDto);
+    public CommentDto addCommentToPublication(CommentDto commentDto)
+    {
+       return commentServiceClient.addComment(commentDto).getBody();
     }
 //--------------------------------------- get user from userService-----------------------------------------------------
     @Override

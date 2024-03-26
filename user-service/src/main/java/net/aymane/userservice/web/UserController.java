@@ -64,12 +64,12 @@ public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserRequ
 
     //------------------------------ delete user -----------------------------------------------------------------------
 @DeleteMapping("/user/{id}")
-public ResponseEntity<?> deleteUser(@PathVariable Long id) throws UserException {
-userService.deleteUser(id);
-Map<String,String> response= new HashMap<>();
-response.put("status","201");
-response.put("message","user deleted successfully");
-return ResponseEntity.status(HttpStatus.OK).body(response);
+public  ResponseEntity<?> deleteUser(@PathVariable Long id) throws UserException {
+        userService.deleteUser(id);
+        Map<String,String> response= new HashMap<>();
+        response.put("status","201");
+        response.put("message","user deleted successfully");
+        return ResponseEntity.status(HttpStatus.OK).body(response);
 }
  //----------------------------------  search user by his firstName -----------------
 @GetMapping("/user/search")

@@ -20,27 +20,23 @@ public class CommentController {
     private final CommentRepository commentRepository;
 // --------------------------------------------- add comment -----------------------------------------------------------
     @PostMapping("/comments/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public CommentDto addComment(@RequestParam(name = "id") Long id,@RequestBody CommentDto commentDto) {
+    public ResponseEntity<CommentDto> addComment(@RequestParam(name = "id") Long id,@RequestBody CommentDto commentDto) {
         commentDto.setPublication_Id(id);
            CommentDto commentDto1= commentService.addComment(commentDto);
-           return commentDto1;
+           return ResponseEntity.status(HttpStatus.CREATED).body(commentDto1);
     }
-//    @ResponseStatus(HttpStatus.CREATED)
-//public void addComment(Comment comment){
-//        commentRepository.save(comment);
-//    }
+
     //------------------------------------------  get comment by id-----------------------------------------------------
     @GetMapping("/comment/{id}")
-    public CommentDto getComment(@PathVariable Long id) throws CommentNotFoundException {
+    public ResponseEntity<CommentDto> getComment(@PathVariable Long id) throws CommentNotFoundException {
         CommentDto commentDto = commentService.getComment(id);
-        return commentDto;
+        return ResponseEntity.ok(commentDto);
     }
     //------------------------------------------------- get all comment------------------------------------------------
     @GetMapping("/comments")
-    public List<CommentDto> getComments(){
+    public ResponseEntity<List<CommentDto>> getComments(){
         List<CommentDto> commentDtoList = commentService.allComments();
-        return  commentDtoList;
+        return  ResponseEntity.ok(commentDtoList);
     }
     //------------------------------------------------ delete comment---------------------------------------------------
     @DeleteMapping("/comment/{id}")
@@ -49,9 +45,9 @@ public class CommentController {
     }
     //------------------------------------------------- update comment--------------------------------------------------
     @PutMapping("/comment/{id}")
-    public CommentDto updateComment(@PathVariable Long id,@RequestBody CommentDto commentDto) throws CommentNotFoundException {
+    public ResponseEntity<CommentDto> updateComment(@PathVariable Long id,@RequestBody CommentDto commentDto) throws CommentNotFoundException {
         commentDto.setId(id);
-        return commentService.updateComment(commentDto);
+        return ResponseEntity.ok(commentService.updateComment(commentDto));
     }
 
 // ------------------------------------ get post by id------------------------------------------------------------------

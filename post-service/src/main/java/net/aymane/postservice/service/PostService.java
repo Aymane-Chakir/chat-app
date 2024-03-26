@@ -38,7 +38,7 @@ public interface PostService {
    //------------------------------- delete post------------------------------------------------------------------------
    public void deletePost(Long id) throws PostNotFoundException;
    //--------------------------------- add comment to publication-------------------------------------------------------
-   public void addCommentToPublication(CommentDto commentDto);
+   public CommentDto addCommentToPublication(CommentDto commentDto);
 
    //-------------------------------------- get user by id from user service-------------------------------------------
       public UserResponseDto getUser(Long id);

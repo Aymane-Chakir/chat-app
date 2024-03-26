@@ -52,6 +52,7 @@ public class PostController {
     public void like(@PathVariable Long id) throws PostNotFoundException {
          postService.like(id);
     }
+    //-------------------------------- update publication---------------------------------------------------------------
     @PutMapping("/post/{id}")
     public  ResponseEntity<PostResponseDto> updatePost(@PathVariable Long id , @RequestBody PostRequestDto requestDto) throws PostNotFoundException {
         requestDto.setId(id);
@@ -78,13 +79,13 @@ public class PostController {
         response.put("data",responseDtoList);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-    //------------------------------ add comment------------------------------------------------------------------------
+    //------------------------------ add comment from comment service---------------------------------------------------
     @PostMapping("/comments")
     public void addComment(@RequestParam Long id, @RequestBody CommentDto comment) {
         comment.setPublication_Id(id);
         commentServiceClient.addComment(comment);
     }
-
+//------------------------------------- get user by id from user service------------------------------------------------
     @GetMapping("/user/{id}")
     public UserResponseDto getUser(@PathVariable Long id){
         return postService.getUser(id);

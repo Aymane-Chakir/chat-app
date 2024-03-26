@@ -15,14 +15,14 @@ import java.util.List;
 
 @FeignClient(name = "USER-SERVICE")
 public interface UserRestClient {
-     //------------------------------- get user by id from userService -------------------------------------------------
+     //------------------------------- get user by id from userServi<<ce -------------------------------------------------
 @GetMapping("/api/user/{id}")
 //@CircuitBreaker(name = "userService", fallbackMethod = "getDefaultUser")
 public ResponseEntity<UserResponseDto> getUser(@PathVariable Long id);
 //-------------------------------- get all users from userService-------------------------------------------------------
 @GetMapping("/api/users")
 @CircuitBreaker(name = "userService", fallbackMethod = "getDefaultUsers")
-     List<UserResponseDto> getAllUsers();
+     ResponseEntity<List<UserResponseDto>> getAllUsers();
 
 //---------------------------------- getDefault user si le service pris en charge---------------------------------------
      default UserResponseDto getDefaultUser(Long id, Exception exception){
