@@ -20,6 +20,8 @@
         <option value="$PROJECT_DIR$/config-service/pom.xml" />
         <option value="$PROJECT_DIR$/Discovery-service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/../New folder/like-service/like-service/pom.xml" />
+        <option value="$PROJECT_DIR$/like-service/pom.xml" />
       </list>
     </option>
   </component>
